@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>list of courses</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+<h2> List of Courses </h2><a  class="w3-btn w3-black" href="/student/" style=" position:absolute; left:80%; top:20px;"> Home</a>
+<table >
+    <tr>
+        <th>CourseID</th>
+        <th>CourseName</th>
+        <th>Department</th>
+        <th>Credit</th>
+        <th>Modify</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="course : ${courses}">
+        <th th:text="${course.courseID}">0</th>
+        <th th:text="${course.courseName}">0</th>
+        <th th:text="${course.Department}">0</th>
+        <th th:text="${course.Credit_hours}">0</th>
+        <td >
+            <form th:action="@{/course/update}"  method="GET">
+                <input type="hidden" name="id"     th:value="${course.courseID}">
+                <input type="submit" value="Modify" class="but">
+            </form>
+        </td>
+        <td >
+            <form th:action="@{/course/delete}" method="POST"  onSubmit="return confirm('Are you sure you wish to delete?')" >
+                <input type="hidden" name="id"     th:value="${course.courseID}">
+                <input type="submit"  value="Delete" class="but">
+            </form>
+        </td>
+    </tr>
+</table>
+<p><button class="w3-button w3-red" onclick="location.href='/course/add'">Add course</button></p>
+</body>
+</html>

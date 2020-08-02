@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        a:link, a:visited {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover, a:active {
+            background-color: red;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body style="background-color: #f2f2f2">
+
+<h3 style="  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;text-align:center;"> We want to say:<a th:text="${greeting}"></a></h3>
+<h3 style="text-align:center;"><a href="/student/"> Students and Course list</a></h3>
+</body>
+</html>
