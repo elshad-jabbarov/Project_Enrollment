@@ -90,6 +90,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>2.7.1</version>
                 <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <from>
                         <image>openjdk:11-jdk-slim</image>
                     </from>
