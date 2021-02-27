@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/openjdk:11.0.1-jdk
 
-    working_directory: ~/project_enrolment
+    working_directory: ~/project_enrollment
 
     steps:
       - checkout # git pull
@@ -13,20 +13,20 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - project_enrolment-{{ checksum "pom.xml" }}
+            - project_enrollment-{{ checksum "pom.xml" }}
 
       - run: mvn dependency:go-offline
 
       - save_cache:
           paths:
             - ~/.m2
-          key: project_enrolment-{{ checksum "pom.xml" }}
+          key: project_enrollment-{{ checksum "pom.xml" }}
 
       # package into a jar
       - run: mvn clean package
 
       # build and push docker image to docker hub
-      - run: mvn clean compile jib:build -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS -eelshad1/project_enrollment:$CIRCLE_BUILD_NUM
+      - run: mvn clean compile jib:build -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS -elshad1/project_enrollment:$CIRCLE_BUILD_NUM
 
 
       # store raw contents of src code
