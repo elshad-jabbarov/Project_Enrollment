@@ -20,7 +20,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.m2
-          key: project_enrollment-{{ checksum "pom.xml" }}
+          key: Elshad_Jabbarov-{{ checksum "pom.xml" }}
 
       # package into a jar
       - run: mvn clean package
