@@ -90,12 +90,15 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>2.7.1</version>
                 <configuration>
-                    <to>
-                        <image>registry.hub.docker.com/elshad1/demo:$CIRCLE_BUILD_NUM</image>
-                        <image>registry.hub.docker.com/elshad1/demo</image>
-                    </to>                    <from>
+                    <from>
                         <image>openjdk:11-jdk-slim</image>
                     </from>
+                    <to>
+                        <auth>
+                            <username>elshad1</username>
+                            <password>elsad4341535</password>
+                        </auth>
+                    </to>
                     <container>
                         <ports>
                             <port>8080</port>
