@@ -15,6 +15,10 @@ jobs:
           keys:
             - Elshad_Jabbarov-{{ checksum "pom.xml" }}
 
+      - run:
+          name: Login to DockerHub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
       - run: mvn dependency:go-offline
 
       - save_cache:
@@ -26,8 +30,8 @@ jobs:
       - run: mvn clean package
 
       # build and push docker image to docker hub
-      - run: mvn clean compile jib:build -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS
-             -elshad1/project_enrollment:$CIRCLE_BUILD_NUM
+      - run: mvn clean compile jib:build -elshad1/project_enrollment:$CIRCLE_BUILD_NUM
+
 
 
       # store raw contents of src code
