@@ -13,4 +13,6 @@ jobs:
       # package into a jar
       - run: mvn clean package
       - run: mvn clean compile jib:build -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS
-           -Dimage=elshad1/project_enrollment:$CIRCLE_BUILD_NUM
+           -Dimage =elshad1
+          /
+          project_enrollment:$CIRCLE_BUILD_NUM
