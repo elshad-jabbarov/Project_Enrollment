@@ -90,8 +90,10 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>2.7.1</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <from>
+                    <to>
+                        <image>registry.hub.docker.com/elshad1/demo:$CIRCLE_BUILD_NUM</image>
+                        <image>registry.hub.docker.com/elshad1/demo</image>
+                    </to>                    <from>
                         <image>openjdk:11-jdk-slim</image>
                     </from>
                     <container>
