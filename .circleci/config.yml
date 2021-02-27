@@ -1,15 +1,34 @@
-version: 2.0
+version: 2
 
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:11.0.1-jdk
-        auth:
-          username: $DOCKER_USER
-          password: $DOCKER_PASS  # context / project UI env-var reference
+      - image: circleci/openjdk:11.0.9-jdk
+
+    working_directory: ~/project_enrolment
+
     steps:
-      - checkout
-      - run: ./mvnw package
+      - checkout # git pull
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - project_enrolment-{{ checksum "pom.xml" }}
+
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: project_enrolment-{{ checksum "pom.xml" }}
+
       # package into a jar
       - run: mvn clean package
-      - run: mvn clean compile jib:build -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS -Dimage =elshad1/project_enrollment:$CIRCLE_BUILD_NUM
+
+      # build and push docker image to docker hub
+      - run: mvn clean compile jib:build -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS -elshad1/project_enrollment:$CIRCLE_BUILD_NUM
+
+      # store raw contents of src code
+      - store_artifacts:
+          path: target/classes
+          destination: webtest
