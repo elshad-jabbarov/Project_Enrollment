@@ -13,7 +13,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - project_enrollment-{{ checksum "pom.xml" }}
+            - Elshad_Jabbarov-{{ checksum "pom.xml" }}
 
       - run: mvn dependency:go-offline
 
