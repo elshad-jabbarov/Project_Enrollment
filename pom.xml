@@ -93,12 +93,12 @@
                     <from>
                         <image>openjdk:11-jdk-slim</image>
                     </from>
-                    <to>
-                        <auth>
-                            <username>elshad1</username>
-                            <password>elsad4341535</password>
-                        </auth>
-                    </to>
+<!--                    <to>-->
+<!--                        <auth>-->
+<!--                            <username>elshad1</username>-->
+<!--                            <password>elsad4341535</password>-->
+<!--                        </auth>-->
+<!--                    </to>-->
                     <container>
                         <ports>
                             <port>8080</port>
