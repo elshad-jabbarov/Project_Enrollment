@@ -56,7 +56,6 @@ public class CourseDTO {
 
     Integer Credit_hours;
 
-
     List<Student> students;
 
 }
